@@ -1,0 +1,7 @@
+W:\VisualStudioProjects\ASyns\ASyns\bin\Debug\ASyns.exe.config
+W:\VisualStudioProjects\ASyns\ASyns\bin\Debug\ASyns.exe
+W:\VisualStudioProjects\ASyns\ASyns\bin\Debug\ASyns.pdb
+W:\VisualStudioProjects\ASyns\ASyns\obj\Debug\ASyns.csprojAssemblyReference.cache
+W:\VisualStudioProjects\ASyns\ASyns\obj\Debug\ASyns.csproj.CoreCompileInputs.cache
+W:\VisualStudioProjects\ASyns\ASyns\obj\Debug\ASyns.exe
+W:\VisualStudioProjects\ASyns\ASyns\obj\Debug\ASyns.pdb
