@@ -5,3 +5,10 @@ W:\VisualStudioProjects\IOLessons\IOLessons\obj\Debug\IOLessons.csprojAssemblyRe
 W:\VisualStudioProjects\IOLessons\IOLessons\obj\Debug\IOLessons.csproj.CoreCompileInputs.cache
 W:\VisualStudioProjects\IOLessons\IOLessons\obj\Debug\IOLessons.exe
 W:\VisualStudioProjects\IOLessons\IOLessons\obj\Debug\IOLessons.pdb
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\bin\Debug\IOLessons.exe.config
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\bin\Debug\IOLessons.exe
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\bin\Debug\IOLessons.pdb
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\obj\Debug\IOLessons.csprojAssemblyReference.cache
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\obj\Debug\IOLessons.csproj.CoreCompileInputs.cache
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\obj\Debug\IOLessons.exe
+W:\GITHUB\C#\C-LessonsByTroelson\Глава 20. Файловый ввод вывод и сериализация объектов\IOLessons\IOLessons\obj\Debug\IOLessons.pdb

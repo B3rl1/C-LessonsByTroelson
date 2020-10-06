@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace IOLessons
 {
@@ -301,6 +303,9 @@ namespace IOLessons
             //независимо, являются ли они закрытыми или открытыми.
             //Если использовать XmlSerializer - то он будет сериализовывать только те поля которые открытые, либо закрытые, если они 
             //доступны посредством свойств.
+            //Сериализация коллекций объектов.
+            //Большинство типов в пространствах имен System.Collections и System.Collections.Generic 
+            //уже помечено атрибутом[Serializable]. 
             #region Выбор форматера сериализации
             //Вне зависимости от того какой форматтер выбран, все они наследуются от System.Object, а потому не разделяют общий набор членов.
             //Типы BinaryFormatter и SoapFormatter поддерживают общие члены, благодаря реализации интерфейсов IFormatter и IRemotingFormatter
@@ -311,27 +316,65 @@ namespace IOLessons
             //BinaryFormatter - сохранения состояния объекта в поток используя компкатный двоичный формат
             //System.Runtime.Serialisation.Formatters.Binary
 
-            BinaryFormatter binFormat = new BinaryFormatter();
-            //Сериализация
-            using (Stream stream = new FileStream(@"W:\stats.dat", FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                binFormat.Serialize(stream, player);
-            }
-            //Десериализация
-            using (Stream fstream = File.OpenRead(@"W:\stats.dat"))
-            {
-                PlayerPrefs pf = (PlayerPrefs)binFormat.Deserialize(fstream);
-                Console.WriteLine(pf.Name + " " + pf.HP);
-            }
+            //BinaryFormatter binFormat = new BinaryFormatter();
+            ////Сериализация
+            //using (Stream stream = new FileStream(@"W:\stats.dat", FileMode.Create, FileAccess.Write, FileShare.None))
+            //{
+            //    binFormat.Serialize(stream, player);
+            //}
+            ////Десериализация
+            //using (Stream fstream = File.OpenRead(@"W:\stats.dat"))
+            //{
+            //    PlayerPrefs pf = (PlayerPrefs)binFormat.Deserialize(fstream);
+            //    Console.WriteLine(pf.Name + " " + pf.HP);
+            //}
 
             #endregion
+            #region SoapFormatter
             //SoapFormatter - сохранение состояния объекта в виде сообщения SOAP(стандартный XML-формат для передачи 
             //и приема сообщений от веб-служб, основанных на SOAP)
             //Находится в другой сборке, нужно добавить ссылку на System.Runtime.Serialization.Formatters.Soap.dll 
             //и добавить с помощью using System.Runtime.Serialization.Formatters.Soap;
+            //SoapFormatter soapFormat = new SoapFormatter();
+            //using (Stream fstream = new FileStream(@"W:\soap.soap", FileMode.OpenOrCreate))
+            //{
+            //soapFormat.Serialize(fstream, player);
+            //}
+            #endregion
+            #region XmlSerializer
             //XmlSerializer - сохранение дерева объектов в документе XML. 
-            //Systme.Xml.Serialization
-            //
+            //System.Xml.Serialization
+            //Требует наличия стандартного конструктора у сериализуемых типов. (InvalidOperationException)
+            //Требует указания информации о типе, который представляет класс.
+            //         XmlSerializer xmlSerializer = new XmlSerializer(typeof(PlayerPrefs));
+            //         using (Stream fstream = new FileStream(@"W:\xml.xml", FileMode.OpenOrCreate))
+            //{
+            //             xmlSerializer.Serialize(fstream, player);
+            //}
+            //Управление генерацией XML 
+            //[XmlAttribute] - поле/свойство. Сериализовать как атрибут XML(не подэлемент)
+            //[XmlElement] - поле/свойство. Сериализовать как элемент.
+            //[XmlEnum] - атрибут предсоставляет имя элемента члена перечисления
+            //[XmlRoot] - как будет сконструирован корневой элемент
+            //[XmlText] - свойство/поле. Сериализовать как текст XML
+            //[XmlType] - предоставляет имся и пространство имен типа XML
+            #endregion
+            #endregion
+            #region Настройка процесса сериализации SOAP и двоичной сериализации.
+            //ISerializable Этот интерфейс может быть реализован типом[Serializable]
+            //для управления его сериализацией и десериализацией
+            //ObjectIDGenerator Этот тип генерирует идентификаторы для членов в графе объектов
+            //[OnDeserialized] Этот атрибут позволяет указать метод, который будет вызван немедленно после десериализации объекта
+            //[OnDeserializing] Этот атрибут позволяет указать метод, который будет вызван перед
+            //началом процесса десериализации
+            //[OnSerialized] Этот атрибут позволяет указать метод, который будет вызван немедленно после того, как объект сериализирован
+            //[OnSerializing] Этот атрибут позволяет указать метод, который будет вызван перед
+            //началом процесса сериализации
+            //[OptionalField] Этот атрибут позволяет определить поле типа, которое может быть
+            //пропущено в указанном потоке
+            //Serializationlnfо Этот класс является пакетом свойств, который поддерживает пары
+            //“имя - значение”, представляющие состояние объекта во время процесса сериализации
+
             #endregion
             #endregion
         }
@@ -342,7 +385,7 @@ namespace IOLessons
         }
     }
 
-    [Serializable]
+    [Serializable, XmlRoot(Namespace = "!!!МОЙ КОД!!!")]
     public class PlayerPrefs
     {
         public string Name { get; set; }
